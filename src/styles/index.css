@@ -27,6 +27,7 @@
 @import './admin-sidebar-polish.css';
 @import './responsive.css';
 @import './admin-sidebar-final.css';
+@import './traveller-sidebar.css';
 
 :root {
   --ink: #0a252b;
