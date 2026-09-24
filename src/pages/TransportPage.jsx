@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { ArrowRight, CalendarDays, Car, Check, ChevronDown, Gauge, MapPin, Search, Settings2, Users } from 'lucide-react'
 import { vehicles } from '../data/catalog'
 import { useTravel } from '../context/TravelContext'
@@ -7,7 +8,8 @@ import { EmptyState } from '../components/PageChrome'
 
 export default function TransportPage() {
   const { addBooking, notify } = useTravel()
-  const [mode, setMode] = useState('Rental')
+  const [params] = useSearchParams()
+  const [mode, setMode] = useState(params.get('mode') === 'Transfer' ? 'Transfer' : 'Rental')
   const [category, setCategory] = useState('All')
   const [vehicle, setVehicle] = useState(vehicles[0])
   const filtered = useMemo(() => vehicles.filter((item) => category === 'All' || item.category === category), [category])

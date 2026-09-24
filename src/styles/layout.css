@@ -18,7 +18,7 @@
 .nav-more { position: relative; }
 .nav-more > button { display: flex; align-items: center; gap: 5px; }
 .nav-more__menu { position: absolute; visibility: hidden; opacity: 0; top: 62px; right: 0; width: 210px; padding: 10px; color: var(--ink); background: white; border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow-md); transform: translateY(8px); transition: .2s; }
-.nav-more:hover .nav-more__menu, .nav-more:focus-within .nav-more__menu { visibility: visible; opacity: 1; transform: none; }
+.nav-more:hover .nav-more__menu, .nav-more:focus-within .nav-more__menu, .nav-more.is-open .nav-more__menu { visibility: visible; opacity: 1; transform: none; }
 .nav-more__menu a { display: block; padding: 10px 12px; border-radius: 8px; font-size: 12px; font-weight: 600; }
 .nav-more__menu a:hover { background: var(--cream); }
 .header-actions { display: flex; align-items: center; gap: 3px; }
@@ -28,11 +28,12 @@
 .login-link { display: flex; align-items: center; gap: 6px; padding: 10px; font-size: 12px; font-weight: 700; }
 .has-dot { position: relative; }
 .has-dot::after { content: ''; position: absolute; top: 8px; right: 8px; width: 6px; height: 6px; border: 2px solid currentColor; border-radius: 50%; background: #e47d67; }
+.has-dot.is-read::after { display: none; }
 .utility-menu { position: relative; }
 .utility-button { height: 38px; display: flex; align-items: center; gap: 4px; padding: 0 7px; color: inherit; background: transparent; font-size: 10px; font-weight: 800; }
 .utility-popover { position: absolute; top: 43px; right: 0; width: 170px; padding: 8px; color: var(--ink); background: white; border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow-md); }
 .utility-popover button { width: 100%; display: flex; justify-content: space-between; padding: 9px; background: transparent; border-radius: 7px; font-size: 11px; }
-.utility-popover button:hover { background: var(--cream); }
+.utility-popover button:hover, .utility-popover button.is-selected { background: var(--cream); color: var(--teal); }
 .utility-popover button span { opacity: .5; }
 .notification-wrap { position: relative; }
 .notification-popover { position: absolute; top: 50px; right: 0; width: 360px; padding: 10px; color: var(--ink); background: rgba(255,255,255,.98); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow-lg); }

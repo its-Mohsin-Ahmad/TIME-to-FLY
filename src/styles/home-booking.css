@@ -20,5 +20,5 @@
 .btn--search { min-height: 42px; padding-inline: 20px; }
 .booking-note { display: flex; align-items: center; justify-content: center; gap: 5px; margin: 11px 0 -4px; color: rgba(255,255,255,.45); font-size: 7px; }
 .booking-note svg { color: var(--warm); }
-.simple-booking { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 8px; }
+.simple-booking { display: grid; grid-template-columns: 1.4fr repeat(4, 1fr); gap: 8px; }
 .simple-booking .booking-submit { grid-column: 1/-1; }

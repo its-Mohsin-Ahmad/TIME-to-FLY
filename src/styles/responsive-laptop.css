@@ -3,10 +3,11 @@
   .main-nav { gap: 12px; }
   .main-nav > a, .nav-more > button { font-size: 10px; }
   .desktop-only { display: none; }
-  .home-hero { min-height: 880px; }
-  .home-hero__content { grid-template-columns: .85fr 1.15fr; gap: 35px; }
-  .hero-copy h1 { font-size: clamp(3.7rem, 6.4vw, 5.6rem); }
-  .hero-booking { margin-top: 85px; }
+  .hero-visual { min-height: 900px; height: 900px; }
+  .hero-slide__content { grid-template-columns: .85fr 1.15fr; }
+  .hero-copy h1 { font-size: clamp(4rem, 6.4vw, 6.3rem); }
+  .hero-destination-card { flex-basis: 185px; }.hero-destination-card.is-active { flex-basis: 210px; }
+  .hero-booking-dock { margin-top: 82px; }
   .flight-fields { grid-template-columns: repeat(3,1fr); }
   .swap-button { display: none; }
   .trust-strip .container-wide { grid-template-columns: repeat(3,1fr); row-gap: 18px; }

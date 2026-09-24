@@ -3,14 +3,20 @@
   .main-nav, .header-cta, .login-link { display: none; }
   .header-actions { margin-left: auto; }
   .mobile-menu-button { display: grid; }
-  .home-hero { min-height: auto; padding: 135px 0 100px; }
-  .home-hero__content { grid-template-columns: 1fr; gap: 30px; padding-top: 20px; }
-  .hero-copy { align-self: auto; padding-top: 0; }
+  .hero-visual { min-height: 0; height: auto; padding-top: 900px; overflow: visible; }
+  .hero-slides { position: absolute; inset: 0 0 auto; height: 880px; min-height: 880px; }
+  .hero-slide-wrap, .hero-slide { height: 880px; bottom: auto; }
+  .hero-slide, .hero-slide__background, .hero-slide__overlay { position: absolute; inset: 0; }
+  .hero-slide__content { height: 880px; }
+  .hero-copy { max-width: 660px; padding-bottom: 0; }
   .hero-copy h1 { max-width: 700px; font-size: clamp(4.2rem, 10vw, 7rem); }
   .hero-copy > p { max-width: 620px; }
-  .hero-booking { width: min(720px,100%); margin: 0 auto; }
-  .home-hero__flight-path { right: -120px; top: 28%; }
-  .hero-scroll { display: none; }
+  .hero-slide__right { display: none; }
+  .hero-card-dock { position: relative; right: auto; bottom: auto; left: auto; width: min(100% - 48px, 720px); margin: 0 auto; padding: 0; }
+  .hero-bottom-bar { position: relative; top: auto; bottom: auto; grid-template-columns: auto 1fr auto; }
+  .hero-booking-dock { width: min(100% - 48px, 720px); margin: 0 auto; padding: 16px; }
+  .hero-booking-dock__title { display: none; }
+  .hero-booking-dock { display: block; }
   .popular-destinations { margin-top: -60px; }
   .destination-track__inner { grid-auto-columns: calc((100% - 32px) / 2.5); }
   .flight-preview-grid, .home-hotel-grid, .home-experience-grid { grid-template-columns: repeat(2,1fr); }

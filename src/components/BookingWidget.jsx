@@ -5,7 +5,7 @@ import { useTravel } from '../context/TravelContext'
 
 const tabs = [
   ['Flights', Plane], ['Hotels', MapPin], ['Packages', Sparkles],
-  ['Experiences', Star], ['Car rental', Car], ['Transfers', Users],
+  ['Cars', Car], ['Transfers', Users],
 ]
 const today = new Date().toISOString().split('T')[0]
 
@@ -16,15 +16,15 @@ function Field({ icon: Icon, label, children, className = '' }) {
 export default function BookingWidget() {
   const [tab, setTab] = useState('Flights')
   const [tripType, setTripType] = useState('Round trip')
-  const [form, setForm] = useState({ from: 'New York (JFK)', to: 'Bali (DPS)', depart: '', return: '', travelers: '2', cabin: 'Economy', destination: '', checkin: '', checkout: '', rooms: '1' })
+  const [form, setForm] = useState({ from: 'New York (JFK)', to: 'Bali (DPS)', depart: '', return: '', travelers: '2', cabin: 'Economy', destination: '', checkin: '', checkout: '', guests: '2', rooms: '1' })
   const navigate = useNavigate()
   const { notify } = useTravel()
   const update = (key) => (event) => setForm((values) => ({ ...values, [key]: event.target.value }))
   const search = (event) => {
     event.preventDefault()
     if (tab === 'Flights' && (!form.from || !form.to || !form.depart)) return notify('Choose your origin, destination, and departure date', 'error')
-    const paths = { Flights: 'flights', Hotels: 'hotels', Packages: 'deals', Experiences: 'experiences', 'Car rental': 'transport', Transfers: 'transport' }
-    const params = new URLSearchParams(tab === 'Flights' ? { from: form.from, to: form.to, depart: form.depart, trip: tripType } : { destination: form.destination || form.to })
+    const paths = { Flights: 'flights', Hotels: 'hotels', Packages: 'deals', Cars: 'transport', Transfers: 'transport' }
+    const params = new URLSearchParams(tab === 'Flights' ? { from: form.from, to: form.to, depart: form.depart, return: form.return, trip: tripType, travelers: form.travelers, cabin: form.cabin } : { destination: form.destination, checkin: form.checkin, checkout: form.checkout, guests: form.guests, rooms: form.rooms, mode: tab === 'Transfers' ? 'Transfer' : tab === 'Cars' ? 'Rental' : '' })
     notify(`${tab} search ready — showing the best matches`)
     navigate(`/${paths[tab]}?${params}`)
   }
@@ -44,9 +44,9 @@ export default function BookingWidget() {
       <div className="booking-submit"><span><i />Live fares from 500+ trusted airlines</span><button className="btn btn--aqua btn--search" type="submit"><Search size={17} />Search flights</button></div>
     </form>}
     {tab !== 'Flights' && <form className="simple-booking" onSubmit={search}>
-      <Field icon={MapPin} label={tab === 'Car rental' || tab === 'Transfers' ? 'Pick-up location' : tab === 'Packages' ? 'Where to?' : 'Destination'}><input value={form.destination} onChange={update('destination')} placeholder={tab === 'Car rental' ? 'Airport, city, or hotel' : 'Search the world'} /></Field>
+      <Field icon={MapPin} label={tab === 'Cars' || tab === 'Transfers' ? 'Pick-up location' : tab === 'Packages' ? 'Where to?' : 'Destination'}><input value={form.destination} onChange={update('destination')} placeholder={tab === 'Cars' ? 'Airport, city, or hotel' : 'Search the world'} /></Field>
       {['Hotels', 'Packages'].includes(tab) && <><Field icon={CalendarDays} label="Check-in"><input type="date" min={today} value={form.checkin} onChange={update('checkin')} /></Field><Field icon={CalendarDays} label="Check-out"><input type="date" min={form.checkin || today} value={form.checkout} onChange={update('checkout')} /></Field></>}
-      <Field icon={Users} label="Guests & rooms"><select><option>2 guests · 1 room</option><option>1 guest · 1 room</option><option>4 guests · 2 rooms</option></select><ChevronDown size={13} /></Field>
+      <Field icon={Users} label="Guests"><select value={form.guests} onChange={update('guests')}><option value="1">1 guest</option><option value="2">2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option></select></Field><Field icon={Users} label="Rooms"><select value={form.rooms} onChange={update('rooms')}><option value="1">1 room</option><option value="2">2 rooms</option><option value="3">3 rooms</option></select></Field>
       <div className="booking-submit"><span>Free cancellation options available</span><button className="btn btn--aqua btn--search" type="submit"><Search size={17} />Search {tab.toLowerCase()}</button></div>
     </form>}
   </div>
