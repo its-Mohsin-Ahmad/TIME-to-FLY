@@ -24,6 +24,7 @@
 @import './commerce-content.css';
 @import './management.css';
 @import './admin-functional.css';
+@import './admin-sidebar-polish.css';
 @import './responsive.css';
 
 :root {
