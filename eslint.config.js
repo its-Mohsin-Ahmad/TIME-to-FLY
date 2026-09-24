@@ -12,7 +12,7 @@ export default [
     rules: {
       ...js.configs.recommended.rules,
       ...reactHooks.configs['recommended-latest'].rules,
-      'react-refresh/only-export-components': ['warn', { allowConstantExport: true, allowExportNames: ['useTravel'] }],
+      'react-refresh/only-export-components': ['warn', { allowConstantExport: true, allowExportNames: ['useTravel', 'useAdmin'] }],
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]', argsIgnorePattern: '^_' }],
     },
   },

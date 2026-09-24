@@ -23,6 +23,7 @@
 @import './content.css';
 @import './commerce-content.css';
 @import './management.css';
+@import './admin-functional.css';
 @import './responsive.css';
 
 :root {
