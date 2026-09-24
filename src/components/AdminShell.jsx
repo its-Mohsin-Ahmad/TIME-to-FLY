@@ -16,6 +16,7 @@ export default function AdminShell({ children }) {
   const [systemOpen, setSystemOpen] = useState(false)
   const [profileOpen, setProfileOpen] = useState(false)
   const [notificationsOpen, setNotificationsOpen] = useState(false)
+  const [hoveredNav, setHoveredNav] = useState(null)
   const [search, setSearch] = useState('')
   const searchRef = useRef(null)
   const navigate = useNavigate()
@@ -23,13 +24,35 @@ export default function AdminShell({ children }) {
   const { state, markNotification, markAllNotifications, deleteNotification } = useAdmin()
   const unread = state.notifications.filter((item) => !item.read).length
   useEffect(() => localStorage.setItem('ttf-admin-collapsed', collapsed), [collapsed])
-  useEffect(() => { const onKey = (event) => { if (event.key === 'Escape') { setMobile(false); setSystemOpen(false); setProfileOpen(false); setNotificationsOpen(false) } if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); searchRef.current?.focus() } }; window.addEventListener('keydown', onKey); return () => window.removeEventListener('keydown', onKey) }, [])
+  useEffect(() => { const onKey = (event) => { if (event.key === 'Escape') { setMobile(false); setSystemOpen(false); setProfileOpen(false); setNotificationsOpen(false); setHoveredNav(null) } if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); searchRef.current?.focus() } }; window.addEventListener('keydown', onKey); return () => window.removeEventListener('keydown', onKey) }, [])
   const searchResults = useMemo(() => { const term = search.trim().toLowerCase(); if (!term) return []; return searchCollections.flatMap(([label, collection, to]) => (state[collection] || []).filter((item) => Object.values(item).join(' ').toLowerCase().includes(term)).map((item) => ({ label, title: item.name || item.flightNumber || item.id, text: item.email || item.item || item.location || item.customer || item.id, to }))).slice(0, 8) }, [search, state])
   const logout = () => { localStorage.removeItem('ttf-admin-state'); notify('You have been logged out'); navigate('/login') }
+  const showNavTooltip = (event, label) => {
+    if (!collapsed || window.innerWidth <= 1024) return
+    const bounds = event.currentTarget.getBoundingClientRect()
+    setHoveredNav({ label, top: bounds.top + bounds.height / 2 })
+  }
+  const hideNavTooltip = () => setHoveredNav(null)
 
   return <div className={`admin-shell ${collapsed ? 'is-collapsed' : ''} ${mobile ? 'drawer-open' : ''}`}>
     <button className="dashboard-overlay" onClick={() => setMobile(false)} aria-label="Close admin menu" />
-    <aside className="admin-sidebar"><div className="dashboard-brand admin-sidebar__brand"><Brand light compact /><div><strong>TIME TO FLY</strong><small>Operations center</small></div><button className="icon-button" onClick={() => setMobile(false)} aria-label="Close admin menu"><X /></button></div><nav className="admin-sidebar__nav" aria-label="Admin navigation">{adminNav.map(([label, Icon, to]) => <NavLink key={label} to={to} className={({ isActive }) => isActive ? 'is-active' : ''} data-label={label} onClick={() => setMobile(false)}><Icon /><span>{label}</span>{['Bookings', 'Notifications'].includes(label) && <b>{label === 'Bookings' ? state.bookings.length : unread}</b>}</NavLink>)}</nav><div className="admin-sidebar__footer"><button className="admin-system" onClick={() => { setSystemOpen((value) => !value); setProfileOpen(false) }}><i /><div><strong>All systems operational</strong><small>Last checked just now</small></div><ChevronRight /></button><button className="dashboard-user" onClick={() => { setProfileOpen((value) => !value); setSystemOpen(false) }}><span>AM</span><div><strong>Alex Morgan</strong><small>Administrator</small></div><ChevronRight /></button></div></aside>
+    <aside className="admin-sidebar"><div className="dashboard-brand admin-sidebar__brand"><Brand light compact /><div><strong>TIME TO FLY</strong><small>Operations center</small></div><button className="icon-button" onClick={() => setMobile(false)} aria-label="Close admin menu"><X /></button></div><nav className="admin-sidebar__nav" aria-label="Admin navigation">{adminNav.map(([label, Icon, to]) => <NavLink
+          key={label}
+          to={to}
+          className={({ isActive }) => `admin-nav-item${isActive ? ' is-active' : ''}`}
+          data-label={label}
+          aria-label={label}
+          onClick={() => { setMobile(false); hideNavTooltip() }}
+          onMouseEnter={(event) => showNavTooltip(event, label)}
+          onMouseLeave={hideNavTooltip}
+          onFocus={(event) => showNavTooltip(event, label)}
+          onBlur={hideNavTooltip}
+        >
+          <span className="admin-nav-item__icon"><Icon /></span>
+          <span className="admin-nav-item__label">{label}</span>
+          {['Bookings', 'Notifications'].includes(label) && <b className="admin-nav-item__badge">{label === 'Bookings' ? state.bookings.length : unread}</b>}
+        </NavLink>)}</nav><div className="admin-sidebar__footer"><button className="admin-system" onClick={() => { setSystemOpen((value) => !value); setProfileOpen(false) }}><i /><div><strong>All systems operational</strong><small>Last checked just now</small></div><ChevronRight /></button><button className="dashboard-user" onClick={() => { setProfileOpen((value) => !value); setSystemOpen(false) }}><span>AM</span><div><strong>Alex Morgan</strong><small>Administrator</small></div><ChevronRight /></button></div></aside>
+    {hoveredNav && <div className="admin-nav-tooltip" role="tooltip" style={{ '--tooltip-top': `${hoveredNav.top}px` }}>{hoveredNav.label}</div>}
 
     <div className="admin-main"><header className="dashboard-topbar"><button className="dashboard-menu" onClick={() => setMobile(true)} aria-label="Open admin menu"><Menu size={20} /></button><button className="dashboard-collapse" onClick={() => setCollapsed((value) => !value)} aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}><ChevronLeft /></button><div className="admin-search"><Search /><input ref={searchRef} value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search bookings, users, flights…" aria-label="Global dashboard search" />{search && <button onClick={() => setSearch('')} aria-label="Clear search"><X size={14} /></button>}<kbd>⌘ K</kbd>{search && <div className="admin-search-results">{searchResults.length ? searchResults.map((result) => <button key={`${result.label}-${result.title}`} onClick={() => { navigate(result.to); setSearch('') }}><strong>{result.title}</strong><small>{result.label} · {result.text}</small></button>) : <p>No dashboard matches</p>}</div>}</div><div className="admin-topbar-actions"><button className="icon-button" onClick={() => { setNotificationsOpen((value) => !value); setProfileOpen(false) }} aria-label="Open admin notifications"><Bell />{unread > 0 && <i />}</button><button className="avatar-link" onClick={() => { setProfileOpen((value) => !value); setSystemOpen(false) }} aria-label="Open profile menu">AM</button></div><Link className="btn btn--outline" to="/dashboard">Traveler view</Link></header>
       {notificationsOpen && <div className="admin-popover admin-notifications"><div className="popover-head"><strong>Notifications</strong><button onClick={markAllNotifications}>Mark all read</button></div>{state.notifications.map((item) => <div className={`admin-notification ${item.read ? 'is-read' : ''}`} key={item.id}><button onClick={() => markNotification(item.id)}><strong>{item.title}</strong><p>{item.text}</p><small>{item.time}</small></button><button onClick={() => deleteNotification(item.id)} aria-label={`Delete ${item.title}`}><X size={14} /></button></div>)}</div>}
