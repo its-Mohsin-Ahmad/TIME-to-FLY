@@ -18,7 +18,7 @@ function DestinationCard({ destination, active, onSelect }) {
         <span className="hero-destination-card__shade" />
         {active && <span className="hero-featured-badge">Featured</span>}
       </button>
-      <button className="hero-destination-card__heart" onClick={() => toggleSave(destination.id)} aria-label={`${isSaved ? 'Remove' : 'Save'} ${destination.name}`}><Heart size={17} fill={isSaved ? 'currentColor' : 'none'} /></button>
+      <button className={`hero-destination-card__heart ${isSaved ? 'is-saved' : ''}`} onClick={() => toggleSave(destination.id)} aria-label={`${isSaved ? 'Remove' : 'Save'} ${destination.name}`} aria-pressed={isSaved}><Heart size={16} strokeWidth={isSaved ? 2.4 : 1.8} fill={isSaved ? 'currentColor' : 'none'} /></button>
     </div>
     <div className="hero-destination-card__body">
       <div><Link to={destination.route}><h3>{destination.name}</h3></Link><p><MapPin size={12} />{destination.location}</p></div>
