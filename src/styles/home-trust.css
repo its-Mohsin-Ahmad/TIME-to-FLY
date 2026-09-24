@@ -1,0 +1,26 @@
+.popular-destinations { position: relative; z-index: 4; margin-top: -82px; color: white; }
+.popular-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 16px; }
+.popular-head .eyebrow { color: var(--aqua); }
+.popular-head h2 { margin: 8px 0 0; font-size: 25px; }
+.carousel-controls { display: flex; gap: 7px; }
+.destination-track { overflow-x: auto; padding: 0 0 12px; scrollbar-width: none; scroll-snap-type: x mandatory; }
+.destination-track__inner { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 48px) / 4); gap: 16px; }
+.destination-track .destination-card { color: white; scroll-snap-align: start; }
+.destination-track .destination-card__image { height: 230px; border: 1px solid rgba(255,255,255,.17); box-shadow: 0 15px 30px rgba(0,18,22,.18); }
+.destination-track .destination-card__body { padding: 11px 3px 0; }
+.carousel-progress { height: 2px; margin-top: 10px; overflow: hidden; background: rgba(255,255,255,.15); border-radius: 99px; }
+.carousel-progress span { display: block; width: 30%; height: 100%; background: var(--aqua); transform-origin: left; transition: transform .3s; }
+.trust-strip { position: relative; z-index: 5; padding: 25px 0; color: white; background: #09272e; border-top: 1px solid rgba(255,255,255,.1); }
+.trust-strip .container-wide { display: grid; grid-template-columns: .6fr repeat(6, 1fr); align-items: center; }
+.trust-intro { display: flex; align-items: center; gap: 9px; padding-right: 18px; color: var(--aqua); }
+.trust-intro strong { color: white; font-size: 10px; line-height: 1.2; }
+.trust-item { display: flex; align-items: center; gap: 9px; min-width: 0; padding: 0 14px; border-left: 1px solid rgba(255,255,255,.1); }
+.trust-item > span { width: 34px; height: 34px; display: grid; place-items: center; flex: 0 0 auto; color: var(--aqua); background: rgba(134,227,208,.08); border-radius: 50%; }
+.trust-item strong { display: block; font-size: 9px; }
+.trust-item p { margin: 2px 0 0; color: rgba(255,255,255,.35); font-size: 7px; white-space: nowrap; }
+.stats-section { padding: 65px 0; background: var(--cream); border-bottom: 1px solid #e3dfd4; }
+.stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); }
+.stats-grid > div { text-align: center; border-right: 1px solid #d8d4c9; }
+.stats-grid > div:last-child { border-right: 0; }
+.stats-grid strong { display: block; color: var(--teal-dark); font: 600 clamp(2rem, 4vw, 3.7rem) 'Playfair Display'; }
+.stats-grid span { display: block; margin-top: 5px; color: var(--muted); font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }

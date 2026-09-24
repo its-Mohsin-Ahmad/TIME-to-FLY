@@ -1,0 +1,33 @@
+.flymate-launcher { position: fixed; z-index: 1100; right: 24px; bottom: 22px; width: 180px; display: grid; grid-template-columns: 44px 1fr; grid-template-rows: 1fr 1fr; align-items: center; padding: 8px; color: white; background: rgba(6,36,41,.92); border: 1px solid rgba(255,255,255,.14); border-radius: 16px; box-shadow: 0 16px 40px rgba(1,20,25,.25); backdrop-filter: blur(16px); text-align: left; transition: .25s var(--ease); }
+.flymate-launcher:hover { transform: translateY(-3px); }
+.flymate-launcher > span { grid-row: 1/3; width: 40px; height: 40px; display: grid; place-items: center; color: var(--ink); background: var(--aqua); border-radius: 12px; }
+.flymate-launcher strong { font-size: 11px; }
+.flymate-launcher small { align-self: start; color: rgba(255,255,255,.5); font-size: 8px; }
+.flymate-panel { position: fixed; z-index: 1200; right: 24px; bottom: 24px; width: min(390px, calc(100vw - 32px)); height: min(620px, calc(100vh - 40px)); display: flex; flex-direction: column; overflow: hidden; color: white; background: #08262c; border: 1px solid rgba(255,255,255,.14); border-radius: 24px; box-shadow: var(--shadow-lg); animation: searchIn .3s var(--ease); }
+.flymate-panel.is-open ~ .toast { bottom: 24px; }
+.flymate-head { display: flex; justify-content: space-between; align-items: center; padding: 17px; background: linear-gradient(120deg, #0c3b40, #08262c); border-bottom: 1px solid var(--line-dark); }
+.flymate-head > div { display: flex; align-items: center; gap: 10px; }
+.flymate-head > div > span { width: 35px; height: 35px; display: grid; place-items: center; color: var(--ink); background: var(--aqua); border-radius: 10px; }
+.flymate-head strong, .flymate-head small { display: block; }
+.flymate-head strong { font-size: 13px; }
+.flymate-head small { color: rgba(255,255,255,.55); font-size: 8px; }
+.flymate-head small i { display: inline-block; width: 5px; height: 5px; margin-right: 4px; background: #70d69a; border-radius: 50%; }
+.flymate-head .icon-button { color: white; }
+.flymate-body { flex: 1; overflow-y: auto; padding: 18px; }
+.chat-message { display: flex; align-items: flex-end; gap: 7px; margin-bottom: 12px; }
+.chat-message > span { width: 25px; height: 25px; display: grid; place-items: center; flex: 0 0 auto; color: var(--ink); background: var(--aqua); border-radius: 50%; }
+.chat-message p { max-width: 82%; margin: 0; padding: 11px 13px; color: rgba(255,255,255,.78); background: rgba(255,255,255,.07); border-radius: 14px 14px 14px 4px; font-size: 11px; line-height: 1.55; }
+.chat-message--user { justify-content: flex-end; }
+.chat-message--user p { color: var(--ink); background: var(--aqua); border-radius: 14px 14px 4px 14px; }
+.quick-prompts { display: flex; flex-wrap: wrap; gap: 6px; margin: 16px 0 0 32px; }
+.quick-prompts button { padding: 7px 9px; color: var(--aqua); background: transparent; border: 1px solid rgba(134,227,208,.3); border-radius: 999px; font-size: 9px; }
+.flymate-input { display: flex; gap: 7px; margin: 0 14px; padding: 7px; background: rgba(255,255,255,.08); border: 1px solid var(--line-dark); border-radius: 13px; }
+.flymate-input input { min-width: 0; padding: 0; color: white; background: transparent; border: 0; box-shadow: none; font-size: 11px; }
+.flymate-input button { width: 36px; min-height: 36px; display: grid; place-items: center; color: var(--ink); background: var(--aqua); border-radius: 9px; }
+.flymate-foot, .flymate-feedback { color: rgba(255,255,255,.35); background: transparent; font-size: 8px; text-align: center; }
+.flymate-foot { display: flex; justify-content: center; align-items: center; gap: 5px; padding: 8px; }
+.flymate-feedback { padding: 5px; text-decoration: underline; }
+.toast { position: fixed; z-index: 5000; left: 50%; bottom: 24px; min-width: 280px; max-width: calc(100% - 32px); display: flex; align-items: center; justify-content: center; gap: 9px; padding: 13px 18px; color: white; background: var(--ink); border: 1px solid rgba(255,255,255,.15); border-radius: 999px; box-shadow: var(--shadow-lg); font-size: 11px; font-weight: 700; transform: translateX(-50%); animation: toastIn .3s var(--ease); }
+.toast svg { color: var(--aqua); }
+.toast--error svg { color: #ff9b88; }
+@keyframes toastIn { from { opacity: 0; transform: translate(-50%, 15px); } }

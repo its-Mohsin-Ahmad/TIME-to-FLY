@@ -1,0 +1,27 @@
+@media (max-width: 1240px) {
+  .container-wide { width: min(calc(100% - 40px), 1180px); }
+  .main-nav { gap: 12px; }
+  .main-nav > a, .nav-more > button { font-size: 10px; }
+  .desktop-only { display: none; }
+  .home-hero { min-height: 880px; }
+  .home-hero__content { grid-template-columns: .85fr 1.15fr; gap: 35px; }
+  .hero-copy h1 { font-size: clamp(3.7rem, 6.4vw, 5.6rem); }
+  .hero-booking { margin-top: 85px; }
+  .flight-fields { grid-template-columns: repeat(3,1fr); }
+  .swap-button { display: none; }
+  .trust-strip .container-wide { grid-template-columns: repeat(3,1fr); row-gap: 18px; }
+  .trust-intro { display: none; }
+  .trust-item:nth-child(4) { border-left: 0; }
+  .destination-track__inner { grid-auto-columns: calc((100% - 32px) / 3); }
+  .package-grid { grid-template-columns: repeat(2,1fr); }
+  .package-card { min-height: 480px; }
+  .results-layout { grid-template-columns: 210px 1fr; }
+  .trip-insights { display: none; }
+  .flight-result__main { grid-template-columns: 130px 1fr 110px; }
+  .catalog-toolbar { grid-template-columns: 1fr 150px 150px auto; }
+  .catalog-toolbar > p { display: none; }
+  .transfer-grid { grid-template-columns: repeat(3,1fr); }
+  .package-detail { grid-template-columns: 190px 1fr 270px; }
+  .footer-main { grid-template-columns: .8fr 2fr; }.footer-trip { display: none; }
+  .user-dashboard-stats, .admin-stats { grid-template-columns: repeat(3,1fr); }
+}

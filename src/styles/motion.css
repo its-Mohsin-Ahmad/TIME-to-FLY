@@ -1,0 +1,25 @@
+input, select, textarea { width: 100%; min-height: 46px; padding: 0 14px; color: var(--ink); background: white; border: 1px solid var(--line); border-radius: 11px; outline: none; transition: border .2s, box-shadow .2s; }
+input:focus, select:focus, textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(23,109,104,.1); }
+textarea { min-height: 130px; padding-block: 13px; resize: vertical; }
+label { display: grid; gap: 7px; font-size: 12px; font-weight: 700; }
+label > span { color: var(--muted); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.check-label { display: flex; align-items: flex-start; gap: 9px; color: var(--muted); font-size: 12px; font-weight: 500; line-height: 1.5; }
+.check-label input { width: 16px; min-height: 16px; flex: 0 0 auto; margin-top: 2px; }
+.form-error { color: var(--danger) !important; font-size: 12px; }
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease) var(--reveal-delay, 0ms), transform .8s var(--ease) var(--reveal-delay, 0ms); }
+.reveal.is-visible { opacity: 1; transform: none; }
+.empty-state { min-height: 280px; grid-column: 1/-1; display: grid; place-items: center; align-content: center; gap: 12px; padding: 40px; text-align: center; border: 1px dashed #cbd7d2; border-radius: var(--radius); background: #fafbf8; }
+.empty-state svg { color: var(--teal); }
+.empty-state h3, .empty-state p { margin: 0; }
+.route-loader { min-height: 70vh; display: grid; place-content: center; justify-items: center; gap: 18px; color: var(--teal); }
+.brand-loader { width: 52px; animation: float 1.5s ease-in-out infinite; }
+.brand-loader svg { width: 100%; }
+.route-loader p { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.not-found { min-height: 75vh; display: grid; place-content: center; justify-items: center; text-align: center; padding: 40px; }
+.not-found > span { color: var(--aqua); font-size: 100px; font-weight: 800; line-height: 1; }
+.not-found h1 { font-size: clamp(2rem, 4vw, 3.7rem); }
+.skip-link { position: fixed; z-index: 9999; left: 16px; top: -60px; padding: 12px 18px; color: var(--ink); background: var(--aqua); border-radius: 8px; transition: top .2s; }
+.skip-link:focus { top: 16px; }
+@keyframes float { 50% { transform: translateY(-8px) rotate(-3deg); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }

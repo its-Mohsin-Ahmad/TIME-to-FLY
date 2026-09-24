@@ -1,0 +1,61 @@
+@media (max-width: 1024px) {
+  .section { padding-block: 85px; }
+  .main-nav, .header-cta, .login-link { display: none; }
+  .header-actions { margin-left: auto; }
+  .mobile-menu-button { display: grid; }
+  .home-hero { min-height: auto; padding: 135px 0 100px; }
+  .home-hero__content { grid-template-columns: 1fr; gap: 30px; padding-top: 20px; }
+  .hero-copy { align-self: auto; padding-top: 0; }
+  .hero-copy h1 { max-width: 700px; font-size: clamp(4.2rem, 10vw, 7rem); }
+  .hero-copy > p { max-width: 620px; }
+  .hero-booking { width: min(720px,100%); margin: 0 auto; }
+  .home-hero__flight-path { right: -120px; top: 28%; }
+  .hero-scroll { display: none; }
+  .popular-destinations { margin-top: -60px; }
+  .destination-track__inner { grid-auto-columns: calc((100% - 32px) / 2.5); }
+  .flight-preview-grid, .home-hotel-grid, .home-experience-grid { grid-template-columns: repeat(2,1fr); }
+  .flight-preview-grid > :last-child, .home-hotel-grid > :last-child { display: none; }
+  .planner-promo { grid-template-columns: 1fr; }
+  .planner-promo__map { min-height: 480px; }
+  .review-grid, .guide-grid { grid-template-columns: repeat(2,1fr); }
+  .review-card:last-child, .guide-card:last-child { display: none; }
+  .footer-newsletter { grid-template-columns: 1fr; gap: 25px; }
+  .footer-main { grid-template-columns: 1fr; gap: 40px; }
+  .footer-links { max-width: 700px; }
+  .page-hero { min-height: 540px; }
+  .page-inline-search { flex-wrap: wrap; }
+  .page-inline-search label { flex: 1 1 30%; }
+  .page-search-fields { grid-template-columns: repeat(3,1fr); }
+  .page-search-fields .btn { min-height: 42px; }
+  .catalog-toolbar { grid-template-columns: 1fr 1fr; }
+  .catalog-toolbar .catalog-search { grid-column: 1/-1; }
+  .destination-catalog, .experience-catalog { grid-template-columns: repeat(2,1fr); }
+  .results-layout { grid-template-columns: 1fr; }
+  .results-layout > .filter-panel { display: none; }
+  .filter-mobile { display: inline-flex; }
+  .mobile-filter-wrap { position: fixed; z-index: 2000; inset: 0; pointer-events: none; }
+  .mobile-filter-wrap.is-open { pointer-events: auto; }
+  .mobile-filter-wrap .filter-panel--mobile { position: absolute; right: 0; bottom: 0; left: 0; display: block; max-height: 85vh; overflow-y: auto; border-radius: 22px 22px 0 0; animation: drawerUp .3s var(--ease); }
+  .filter-apply { width: 100%; margin-top: 15px; }
+  @keyframes drawerUp { from { transform: translateY(100%); } }
+  .hotel-catalog-layout { grid-template-columns: 1fr; }.hotel-filters { display: none; }
+  .package-detail { grid-template-columns: 180px 1fr; }.booking-summary { position: relative; top: 0; grid-column: 1/-1; }
+  .destination-detail-grid { grid-template-columns: 1fr; }.detail-aside { grid-template-columns: 1fr 1fr; }.destination-map { grid-row: span 2; height: 100%; min-height: 360px; }
+  .hotel-detail-layout { grid-template-columns: 1fr; }.hotel-booking-card { position: relative; top: 0; grid-row: 1; }
+  .guide-destination > .container { grid-template-columns: 1fr; }.guide-destination__image { height: 430px; }
+  .support-form-layout { grid-template-columns: 1fr; gap: 35px; }
+  .auth-page { grid-template-columns: .85fr 1.15fr; }.auth-visual { padding: 35px; }.auth-visual__copy h2 { font-size: 3.5rem; }
+  .checkout-layout { grid-template-columns: 1fr 330px; }
+  .ticket-layout { grid-template-columns: 1fr; }.ticket-aside { grid-template-columns: repeat(4,1fr); }.ticket-aside > div { padding: 13px; }
+  .planner-layout { grid-template-columns: 1fr; }.planner-sidebar { grid-template-columns: repeat(3,1fr); }
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .dashboard-shell, .admin-shell { display: block; min-height: 100vh; }
+  .dashboard-sidebar, .admin-sidebar { position: fixed; left: 0; top: 0; width: min(280px, 86vw); height: 100vh; transform: translateX(-100%); transition: transform .3s var(--ease); }
+  .drawer-open .dashboard-sidebar, .drawer-open .admin-sidebar { transform: none; }
+  .dashboard-main, .admin-main { width: 100%; min-width: 0; }
+  .drawer-open .dashboard-overlay { display: block; position: fixed; z-index: 450; inset: 0; background: rgba(2,20,25,.55); }
+  .dashboard-brand > .icon-button { display: grid; }
+  .dashboard-menu { display: grid; }
+  .dashboard-collapse { display: none; }
+  .admin-chart-grid { grid-template-columns: 1.4fr 1fr; }
+}

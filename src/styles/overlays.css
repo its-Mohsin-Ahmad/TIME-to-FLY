@@ -1,0 +1,37 @@
+.mobile-drawer-wrap { position: fixed; z-index: 1500; inset: 0; }
+.drawer-overlay { position: absolute; inset: 0; width: 100%; height: 100%; background: rgba(2,20,25,.58); backdrop-filter: blur(3px); animation: fadeIn .2s; }
+.mobile-drawer { position: absolute; top: 0; right: 0; width: min(410px, 92vw); height: 100%; padding: 22px; overflow-y: auto; color: white; background: linear-gradient(160deg, #0d3338, #061a20 65%); box-shadow: var(--shadow-lg); animation: drawerIn .35s var(--ease); }
+@keyframes drawerIn { from { transform: translateX(100%); } }
+.drawer-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 20px; border-bottom: 1px solid var(--line-dark); }
+.drawer-head .icon-button { color: white; }
+.mobile-drawer nav { display: grid; margin: 18px 0; }
+.mobile-drawer nav a { display: flex; align-items: center; justify-content: space-between; padding: 12px 4px; color: rgba(255,255,255,.85); border-bottom: 1px solid rgba(255,255,255,.08); font-size: 17px; font-weight: 500; }
+.mobile-drawer nav a.active { color: var(--aqua); }
+.mobile-drawer nav a span { opacity: .45; }
+.drawer-utilities { display: flex; gap: 8px; padding: 12px 0; }
+.drawer-utilities .utility-button { color: rgba(255,255,255,.7); border: 1px solid var(--line-dark); border-radius: 999px; }
+.drawer-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+.support-link { display: flex; align-items: center; gap: 8px; padding: 18px 3px; color: rgba(255,255,255,.65); font-size: 12px; }
+.drawer-meta { display: flex; align-items: center; gap: 8px; padding-top: 18px; color: rgba(255,255,255,.35); border-top: 1px solid var(--line-dark); font-size: 10px; text-transform: uppercase; letter-spacing: .1em; }
+
+.global-search { position: fixed; z-index: 3000; inset: 0; display: grid; place-items: start center; padding-top: 9vh; }
+.global-search__backdrop { position: absolute; inset: 0; width: 100%; height: 100%; background: rgba(3,22,28,.72); backdrop-filter: blur(8px); animation: fadeIn .2s; }
+.global-search__panel { position: relative; width: min(720px, calc(100% - 32px)); max-height: 80vh; overflow: auto; padding: 12px; background: var(--paper); border: 1px solid rgba(255,255,255,.4); border-radius: 22px; box-shadow: var(--shadow-lg); animation: searchIn .3s var(--ease); }
+@keyframes searchIn { from { opacity: 0; transform: translateY(-12px) scale(.98); } }
+.search-input { display: flex; align-items: center; gap: 12px; padding: 7px 8px 7px 13px; border: 1px solid var(--line); border-radius: 14px; }
+.search-input > svg { color: var(--teal); }
+.search-input input { min-width: 0; padding: 0; border: 0; box-shadow: none; font-size: 15px; }
+.search-input kbd { padding: 4px 6px; color: var(--muted); background: var(--cream); border: 1px solid var(--line); border-radius: 5px; font-size: 9px; }
+.search-suggestions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 18px; }
+.search-suggestions > div { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.search-suggestions > div > span { width: 100%; color: var(--muted); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; }
+.search-suggestions button, .search-suggestions a { display: flex; align-items: center; gap: 6px; padding: 9px 12px; background: var(--cream); border-radius: 999px; font-size: 11px; font-weight: 700; }
+.search-results { padding: 18px 12px 10px; }
+.search-results > .micro-label { margin: 0 8px 10px; }
+.search-results > button { width: 100%; display: grid; grid-template-columns: 58px 1fr 20px; align-items: center; gap: 13px; padding: 9px; text-align: left; background: transparent; border-radius: 12px; }
+.search-results > button:hover { background: var(--cream); }
+.search-results img { width: 58px; height: 52px; border-radius: 8px; }
+.search-results button > span { display: grid; }
+.search-results small { color: var(--teal); font-size: 8px; font-weight: 800; text-transform: uppercase; }
+.search-results strong { font-size: 13px; }
+.search-results em { color: var(--muted); font-size: 10px; font-style: normal; }

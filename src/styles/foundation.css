@@ -1,0 +1,32 @@
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body { margin: 0; min-width: 320px; min-height: 100vh; background: var(--paper); color: var(--ink); }
+body, button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
+img { display: block; max-width: 100%; object-fit: cover; }
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { color: inherit; }
+button { border: 0; cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: .55; }
+h1, h2, h3, h4, p { margin-top: 0; }
+h1, h2, h3 { font-family: 'Manrope', sans-serif; letter-spacing: -.045em; }
+p { color: var(--muted); line-height: 1.7; }
+::selection { color: var(--ink); background: var(--aqua); }
+:focus-visible { outline: 3px solid rgba(23,109,104,.35); outline-offset: 3px; }
+.container { width: min(calc(100% - 48px), var(--container)); margin-inline: auto; }
+.container-wide { width: min(calc(100% - 64px), 1380px); margin-inline: auto; }
+.section { padding-block: 112px; }
+.section--cream { background: var(--cream); }
+.muted { color: var(--muted); }
+.micro-label { display: inline-flex; align-items: center; gap: 7px; color: var(--teal); font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--teal); font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+.eyebrow i { width: 28px; height: 1px; background: currentColor; }
+.section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; margin-bottom: 46px; }
+.section-heading h2 { margin: 13px 0 10px; font-size: clamp(2.15rem, 4.2vw, 4rem); line-height: 1.02; font-weight: 500; }
+.section-heading p { max-width: 610px; margin-bottom: 0; }
+.section-heading--light h2, .section-heading--light p { color: white; }
+.section-heading--light .eyebrow { color: var(--aqua); }
+.section-mini-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 28px; }
+.section-mini-head h2 { margin: 10px 0 0; font-size: clamp(1.8rem, 3vw, 2.8rem); }
+.text-link { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 800; white-space: nowrap; padding-bottom: 4px; border-bottom: 1px solid currentColor; }
+.text-link svg { transition: transform .25s var(--ease); }
+.text-link:hover svg { transform: translateX(4px); }

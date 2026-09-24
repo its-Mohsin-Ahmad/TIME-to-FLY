@@ -1,0 +1,37 @@
+.flight-preview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.flight-mini-card { padding: 20px; background: white; border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow-sm); transition: .3s var(--ease); }
+.flight-mini-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.flight-mini-card__top { display: flex; align-items: center; gap: 10px; }
+.airline-code { width: 38px; height: 38px; display: grid; place-items: center; flex: 0 0 auto; color: white; background: var(--accent); border-radius: 11px; font-size: 10px; font-weight: 800; }
+.flight-mini-card__top > div { display: grid; }
+.flight-mini-card__top strong { font-size: 11px; }
+.flight-mini-card__top small { color: var(--muted); font-size: 8px; }
+.flight-mini-card__top .pill { margin-left: auto; font-size: 7px; }
+.flight-mini-route { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; margin: 23px 0; }
+.flight-mini-route > div:first-child, .flight-mini-route > div:last-child { display: grid; }
+.flight-mini-route > div:last-child { text-align: right; }
+.flight-mini-route strong { font-size: 19px; }
+.flight-mini-route span { color: var(--muted); font-size: 8px; }
+.flight-mini-route > div:nth-child(2) { display: grid; justify-items: center; gap: 4px; }
+.flight-mini-route i { position: relative; width: 100%; height: 1px; background: #cedbd7; }
+.flight-mini-route i svg { position: absolute; left: 50%; top: 50%; padding: 2px; color: var(--teal); background: white; transform: translate(-50%,-50%); }
+.flight-mini-card__bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 13px; border-top: 1px solid var(--line); }
+.flight-mini-card__bottom p { margin: 0; font-size: 8px; }
+.flight-mini-card__bottom p strong { color: var(--ink); font-size: 16px; }
+.flight-mini-card__bottom a { display: flex; align-items: center; gap: 5px; color: var(--teal); font-size: 9px; font-weight: 800; }
+.home-hotel-grid, .home-experience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.packages-section, .destination-experiences { color: white; background: #0a2a31; }
+.package-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.package-card { position: relative; min-height: 430px; overflow: hidden; border-radius: 18px; }
+.package-card > img { position: absolute; inset: 0; width: 100%; height: 100%; transition: transform .7s var(--ease); }
+.package-card:hover > img { transform: scale(1.06); }
+.package-card__shade { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(2,20,25,.9), transparent 65%); }
+.package-card > .pill { position: absolute; left: 13px; top: 13px; color: var(--ink); background: var(--aqua); }
+.package-card__body { position: absolute; left: 18px; right: 18px; bottom: 18px; }
+.package-card__body > small { color: var(--aqua); font-size: 8px; font-weight: 800; text-transform: uppercase; }
+.package-card__body h3 { margin: 6px 0 3px; font-size: 22px; }
+.package-card__body p { margin: 0 0 12px; color: rgba(255,255,255,.5); font-size: 8px; }
+.package-card__body > div { display: flex; align-items: center; gap: 8px; }
+.package-card__body strong { font-size: 18px; }
+.package-card__body del { color: rgba(255,255,255,.35); font-size: 9px; }
+.package-card__body a { width: 36px; height: 36px; display: grid; place-items: center; margin-left: auto; color: var(--ink); background: var(--aqua); border-radius: 50%; }

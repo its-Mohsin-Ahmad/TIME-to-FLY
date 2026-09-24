@@ -1,0 +1,18 @@
+.review-section { background: var(--cream); }
+.review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.review-card { padding: 28px; color: white; background: #0c3036; border-radius: 18px; }
+.review-card > svg { color: var(--aqua); opacity: .7; }.review-card .stars { display: block; margin: 18px 0; }
+.review-card blockquote { min-height: 105px; margin: 0; color: rgba(255,255,255,.8); font: 500 16px/1.65 'Playfair Display'; }
+.review-card > div { display: flex; align-items: center; gap: 10px; margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line-dark); }
+.review-card > div > span { width: 36px; height: 36px; display: grid; place-items: center; color: var(--ink); background: var(--aqua); border-radius: 50%; font-size: 8px; font-weight: 800; }
+.review-card p { margin: 0; }.review-card p strong, .review-card p small { display: block; }.review-card p strong { color: white; font-size: 9px; }.review-card p small { font-size: 7px; }
+.guide-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.guide-card { position: relative; min-height: 400px; overflow: hidden; border-radius: 18px; }
+.guide-card img { position: absolute; inset: 0; width: 100%; height: 100%; transition: transform .7s var(--ease); }.guide-card:hover img { transform: scale(1.06); }
+.guide-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(2,20,25,.9), transparent 65%); }
+.guide-card > div { position: absolute; z-index: 1; left: 20px; right: 20px; bottom: 20px; color: white; }
+.guide-card > div > span { color: var(--aqua); font-size: 8px; font-weight: 800; text-transform: uppercase; }.guide-card h3 { margin: 8px 0; font-size: 18px; }.guide-card p { margin: 0; color: rgba(255,255,255,.45); font-size: 8px; }
+.guide-card a { position: absolute; right: 0; bottom: 0; width: 35px; height: 35px; display: grid; place-items: center; color: var(--ink); background: var(--aqua); border-radius: 50%; }
+.assurance-banner { padding: 25px 0; color: white; background: var(--teal-dark); }
+.assurance-banner > div { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+.assurance-banner > div > div { display: flex; align-items: center; gap: 13px; }.assurance-banner > div > div > span { color: var(--aqua); }.assurance-banner p { margin: 0; color: rgba(255,255,255,.55); font-size: 10px; }.assurance-banner p strong { color: white; }.assurance-banner a { display: flex; align-items: center; gap: 6px; color: var(--aqua); font-size: 9px; font-weight: 800; }

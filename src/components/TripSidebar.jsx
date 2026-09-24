@@ -1,0 +1,6 @@
+import { CircleDollarSign } from 'lucide-react'
+
+export default function TripSidebar({ days, addSailing }) {
+  const spent = days.flatMap((day) => day.items).reduce((total, item) => total + ({ Flight: 680, Hotel: 240, Food: 70, Activity: 85 }[item.type] || 0), 0)
+  return <aside className="planner-sidebar"><div className="budget-card"><div><CircleDollarSign /><span>Trip budget</span></div><strong>${spent.toLocaleString()} <small>of $3,200</small></strong><progress value={spent} max="3200" /><p><span>${(3200 - spent).toLocaleString()} remaining</span><button>Adjust</button></p><div>{['Flights', 'Stay', 'Activities', 'Food'].map((item, index) => <span key={item}><i className={`budget-color-${index}`} />{item}<b>${[680, 920, 430, 190][index]}</b></span>)}</div></div><div className="planner-bookings"><h3>Bookings in this trip</h3><p><span>✈</span><div><strong>JFK → DPS</strong><small>Oct 12 · TF 218</small></div><b>✓</b></p><p><span>⌂</span><div><strong>Solei Resort</strong><small>Oct 12–19 · 6 nights</small></div><b>✓</b></p><button>View all bookings <span>→</span></button></div><div className="flymate-plan-card"><span>✦</span><h3>FlyMate has a suggestion</h3><p>Add a sunset sailing on your free Friday. It fits your route and budget.</p><button onClick={addSailing}>Add to day 3 <span>→</span></button></div></aside>
+}
