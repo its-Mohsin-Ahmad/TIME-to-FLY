@@ -15,7 +15,6 @@
   img { max-width: 100%; }
   .container, .container-wide { width: calc(100% - (var(--mobile-gutter) * 2)); max-width: none; }
   .section { padding-block: 68px; }
-  .skip-link { top: calc(8px + var(--mobile-safe-top)); }
   .footer-group { display: flex; flex-direction: column; gap: 9px; }
   .footer-group-toggle { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0; color: white; background: transparent; text-align: left; }
   .footer-group-toggle strong { margin: 0; }

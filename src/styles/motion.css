@@ -19,7 +19,5 @@ label > span { color: var(--muted); }
 .not-found { min-height: 75vh; display: grid; place-content: center; justify-items: center; text-align: center; padding: 40px; }
 .not-found > span { color: var(--aqua); font-size: 100px; font-weight: 800; line-height: 1; }
 .not-found h1 { font-size: clamp(2rem, 4vw, 3.7rem); }
-.skip-link { position: fixed; z-index: 9999; left: 16px; top: -60px; padding: 12px 18px; color: var(--ink); background: var(--aqua); border-radius: 8px; transition: top .2s; }
-.skip-link:focus { top: 16px; }
 @keyframes float { 50% { transform: translateY(-8px) rotate(-3deg); } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }

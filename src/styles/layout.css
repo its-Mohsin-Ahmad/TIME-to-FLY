@@ -47,4 +47,7 @@
 .notification-item small { font-size: 9px; color: #9aabad; }
 .notification-item i { width: 6px; height: 6px; margin-top: 6px; border-radius: 50%; background: var(--warm); }
 .notification-popover > a { display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: 5px; padding: 10px; color: var(--teal); background: var(--cream); border-radius: 9px; font-size: 10px; font-weight: 800; }
-.mobile-menu-button { display: none; width: 42px; height: 42px; place-items: center; color: inherit; background: transparent; }
+.mobile-menu-button { display: grid; width: 42px; height: 42px; flex: 0 0 auto; place-items: center; color: inherit; background: transparent; border-radius: 11px; transition: background .2s ease, transform .2s ease; }
+.mobile-menu-button:hover { background: rgba(10,37,43,.08); }
+.mobile-menu-button:active { transform: scale(.94); }
+.site-header--overlay .mobile-menu-button:hover { background: rgba(255,255,255,.14); }
