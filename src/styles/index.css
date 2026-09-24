@@ -28,6 +28,7 @@
 @import './responsive.css';
 @import './admin-sidebar-final.css';
 @import './traveller-sidebar.css';
+@import './mobile-premium.css';
 
 :root {
   --ink: #0a252b;

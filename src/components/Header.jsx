@@ -47,6 +47,7 @@ function Header() {
   return <header className={`site-header ${overlay ? 'site-header--overlay' : 'site-header--solid'} ${scrolled ? 'is-scrolled' : ''}`}>
     <a className="skip-link" href="#main-content">Skip to content</a>
     <div className="header-inner container-wide">
+      <button className="mobile-menu-button mobile-menu-trigger" onClick={() => setMobile(true)} aria-label="Open navigation"><Menu size={22} /></button>
       <Brand light={overlay} />
       <nav className="main-nav" aria-label="Main navigation">
         {primary.map(([label, to]) => <NavLink key={to} to={to} end={to === '/'}>{label}</NavLink>)}
@@ -62,7 +63,7 @@ function Header() {
         </div>
         <Link className="login-link desktop-only" to="/login"><UserRound size={16} /> Profile</Link>
         <Link className="btn btn--aqua header-cta" to="/trips">Plan your trip <Plane size={15} /></Link>
-        <button className="mobile-menu-button" onClick={() => setMobile(true)} aria-label="Open menu"><Menu size={22} /></button>
+
       </div>
     </div>
     {mobile && <div className="mobile-drawer-wrap"><button className="drawer-overlay" onClick={() => setMobile(false)} aria-label="Close menu" /><aside className="mobile-drawer"><div className="drawer-head"><Brand light /><button className="icon-button" onClick={() => setMobile(false)} aria-label="Close menu"><X /></button></div><nav>{[...primary, ...more].map(([label, to]) => <NavLink key={to} to={to} onClick={() => setMobile(false)}>{label}<span>→</span></NavLink>)}</nav><div className="drawer-utilities"><UtilityMenu label="Language: English" items={['English', 'Français', 'Español']} /><UtilityMenu label="Currency: USD" items={['US Dollar', 'Euro', 'AED']} /></div><div className="drawer-actions"><Link className="btn btn--outline-light" to="/login" onClick={() => setMobile(false)}>Login</Link><Link className="btn btn--aqua" to="/signup" onClick={() => setMobile(false)}>Create account</Link></div><Link className="support-link" to="/support"><CircleHelp size={16} /> Help & support</Link><div className="drawer-meta"><Globe2 size={14} /> One journey. Every detail.</div></aside></div>}
