@@ -1,6 +1,6 @@
 import { Bell, ChevronLeft, LogOut, Menu, ShieldCheck, UserRound, X, Check } from 'lucide-react'
-import { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Brand from './Brand'
 import { useTravel } from '../context/TravelContext'
 import { travellerNav } from '../data/travellerNav'
@@ -14,8 +14,14 @@ export default function TravellerShell({ children }) {
   const [profileOpen, setProfileOpen] = useState(false)
   const [unread, setUnread] = useState(3)
   const [tooltip, setTooltip] = useState(null)
+  const navRef = useRef(null)
+  const location = useLocation()
   const navigate = useNavigate()
   const { notify, setSearchOpen } = useTravel()
+  useEffect(() => {
+    const activeItem = navRef.current?.querySelector('.traveller-nav-item.is-active')
+    activeItem?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
+  }, [location.pathname])
   useEffect(() => { localStorage.setItem('ttf-dashboard-collapsed', collapsed) }, [collapsed])
   useEffect(() => {
     const onKey = (event) => { if (event.key === 'Escape') { setMobile(false); setSystemOpen(false); setNotificationsOpen(false); setProfileOpen(false); setTooltip(null) } }
@@ -33,7 +39,7 @@ export default function TravellerShell({ children }) {
     <button className="dashboard-overlay" onClick={() => setMobile(false)} aria-label="Close traveller menu" />
     <aside className="traveller-sidebar" aria-label="Traveller sidebar">
       <div className="traveller-sidebar__header dashboard-brand"><Brand light compact /><div><strong>TIME TO FLY</strong><small>Traveller Portal</small></div><button className="icon-button traveller-sidebar__close" onClick={() => setMobile(false)} aria-label="Close traveller menu"><X size={18} /></button></div>
-      <nav className="traveller-sidebar__nav" aria-label="Traveller navigation">{travellerNav.map((item) => <TravellerNavItem key={item.label} item={item} onNavigate={() => { setMobile(false); setTooltip(null) }} onTooltip={showTooltip} />)}</nav>
+      <nav ref={navRef} className="traveller-sidebar__nav" aria-label="Traveller navigation"><div className="traveller-sidebar__nav-intro" aria-hidden="true"><span>Workspace</span><small>Scroll to explore</small></div>{travellerNav.map((item) => <TravellerNavItem key={item.label} item={item} onNavigate={() => { setMobile(false); setTooltip(null) }} onTooltip={showTooltip} />)}<div className="traveller-sidebar__scroll-end" aria-hidden="true"><span>More journeys await</span><i>↓</i></div></nav>
       <div className="traveller-sidebar__footer"><button className="traveller-system" onClick={() => { setSystemOpen((value) => !value); setProfileOpen(false); setNotificationsOpen(false) }}><i /><div><strong>All systems operational</strong><small>Last checked just now</small></div><span>›</span></button><TravellerProfile onOpen={openProfile} /></div>
     </aside>
     {tooltip && <div className="traveller-nav-tooltip" role="tooltip" style={{ '--tooltip-top': `${tooltip.top}px` }}>{tooltip.label}</div>}
