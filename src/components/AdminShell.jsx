@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Bell, Building2, CalendarDays, Car, ChevronLeft, ChevronRight, CircleDollarSign, CreditCard, FileText, Gift, Globe2, LayoutDashboard, Map, Menu, Percent, Plane, Search, Settings, Star, Ticket, UserRound, Users, X } from 'lucide-react'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import Brand from './Brand'
 import { useAdmin } from '../context/AdminContext'
 import { useTravel } from '../context/TravelContext'
@@ -19,11 +19,17 @@ export default function AdminShell({ children }) {
   const [hoveredNav, setHoveredNav] = useState(null)
   const [search, setSearch] = useState('')
   const searchRef = useRef(null)
+  const navRef = useRef(null)
+  const location = useLocation()
   const navigate = useNavigate()
   const { notify } = useTravel()
   const { state, markNotification, markAllNotifications, deleteNotification } = useAdmin()
   const unread = state.notifications.filter((item) => !item.read).length
   useEffect(() => localStorage.setItem('ttf-admin-collapsed', collapsed), [collapsed])
+  useEffect(() => {
+    const activeItem = navRef.current?.querySelector('.admin-nav-item.is-active')
+    activeItem?.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' })
+  }, [location.pathname])
   useEffect(() => { const onKey = (event) => { if (event.key === 'Escape') { setMobile(false); setSystemOpen(false); setProfileOpen(false); setNotificationsOpen(false); setHoveredNav(null) } if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); searchRef.current?.focus() } }; window.addEventListener('keydown', onKey); return () => window.removeEventListener('keydown', onKey) }, [])
   const searchResults = useMemo(() => { const term = search.trim().toLowerCase(); if (!term) return []; return searchCollections.flatMap(([label, collection, to]) => (state[collection] || []).filter((item) => Object.values(item).join(' ').toLowerCase().includes(term)).map((item) => ({ label, title: item.name || item.flightNumber || item.id, text: item.email || item.item || item.location || item.customer || item.id, to }))).slice(0, 8) }, [search, state])
   const logout = () => { localStorage.removeItem('ttf-admin-state'); notify('You have been logged out'); navigate('/login') }
@@ -36,7 +42,7 @@ export default function AdminShell({ children }) {
 
   return <div className={`admin-shell ${collapsed ? 'is-collapsed' : ''} ${mobile ? 'drawer-open' : ''}`}>
     <button className="dashboard-overlay" onClick={() => setMobile(false)} aria-label="Close admin menu" />
-    <aside className="admin-sidebar"><div className="dashboard-brand admin-sidebar__brand"><Brand light compact /><div><strong>TIME TO FLY</strong><small>Operations center</small></div><button className="icon-button" onClick={() => setMobile(false)} aria-label="Close admin menu"><X /></button></div><nav className="admin-sidebar__nav" aria-label="Admin navigation">{adminNav.map(([label, Icon, to]) => <NavLink
+    <aside className="admin-sidebar"><div className="dashboard-brand admin-sidebar__brand"><Brand light compact /><div><strong>TIME TO FLY</strong><small>Operations center</small></div><button className="icon-button" onClick={() => setMobile(false)} aria-label="Close admin menu"><X /></button></div><nav ref={navRef} className="admin-sidebar__nav" aria-label="Admin navigation">{adminNav.map(([label, Icon, to]) => <NavLink
           key={label}
           to={to}
           className={({ isActive }) => `admin-nav-item${isActive ? ' is-active' : ''}`}
